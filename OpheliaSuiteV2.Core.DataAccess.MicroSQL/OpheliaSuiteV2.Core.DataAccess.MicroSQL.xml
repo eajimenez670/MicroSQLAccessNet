@@ -1,0 +1,3271 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpheliaSuiteV2.Core.DataAccess.MicroSQL</name>
+    </assembly>
+    <members>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ColumnNameAttribute">
+            <summary>
+            Marca la propiedad con el nombre de la columna a la que apunta
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ColumnNameAttribute.Name">
+            <summary>
+            Nombre de la columna
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ColumnNameAttribute.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="name">Nombre de la columna</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ForeignKeyAttribute">
+            <summary>
+            Marca las propiedades que son foráneas a otras entidades
+            creando así la relación entre ellas
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ForeignKeyAttribute.NavigationProperty">
+            <summary>
+            Nombre de la propiedad de navegación
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ForeignKeyAttribute.ForeignProperty">
+            <summary>
+            Nombre de la propiedad en la entidad foránea
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.ForeignKeyAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="navigationProperty">Nombre de la propiedad de navegación</param>
+            <param name="foreignProperty">Nombre de la propiedad en la entidad foránea</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.IgnoredPropertyAttribute">
+            <summary>
+            Marca las propiedades que serán ignoradas en
+            todo el contexto de acceso a datos
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyAttribute">
+            <summary>
+            Marca la propiedad principal de la llave
+            primaria de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyAttribute.Type">
+            <summary>
+            Tipo de llave primaria
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyAttribute.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="type">Tipo de llave primaria</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType">
+            <summary>
+            Tipo de llave
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType.Manually">
+            <summary>
+            Llave manual
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType.Autoincrement">
+            <summary>
+            Llave autoincrementada calculada
+            a partir de las partes auxiliares.
+            Normalmente usada en llaves compuestas.
+            El tipo de dato de la propiedad
+            debe ser <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Int16"/>,
+            <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType.Identity">
+            <summary>
+            Identificador autoincrementado por la
+            base de datos. El tipo de dato de la propiedad
+            debe ser <see cref="T:System.Int16"/>, <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>, <see cref="T:System.Int16"/>,
+            <see cref="T:System.Int32"/>, <see cref="T:System.Int64"/>
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType.Uniqueidentifier">
+            <summary>
+            Identificador único calculado por la base de datos.
+            El tipo de dato de la propiedad debe ser <see cref="T:System.Guid"/>
+            o <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyPartAttribute">
+            <summary>
+            Marca la propiedad como parte de la llave
+            primaria de la entidad, cuando la llave es compuesta
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.TableNameAttribute">
+            <summary>
+            Marca la entidad con el nombre de la tabla a la que
+            apunta
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.TableNameAttribute.Name">
+            <summary>
+            Nombre de la tabla
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.TableNameAttribute.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="name">Nombre de la tabla</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder">
+            <summary>
+            Provee funcionalidad para construir los
+            artefactos necesarios para el funcionamiendo
+            de un <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext"/>
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder.Options">
+            <summary>
+            Opciones de configuración del contexto
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder.Factory">
+            <summary>
+            Fabrica del proveedor
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder.SqlCompiler">
+            <summary>
+            Compilador Sql
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inializa una nueva instancia de la clase
+            </summary>
+            <param name="options">Opciones del contexto</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder.Initialize(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inializa la instancia aplicando la lógica para construir
+            la fabrica correspondiente a la configuración
+            </summary>
+            <param name="options">Opciones del contexto</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Builders.DbContextBuilder.CreateConnection(System.Boolean)">
+            <summary>
+            Crea una conexión con la configuración
+            asignada en las opciones
+            </summary>
+            <returns>Configuración</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition">
+            <summary>
+            Encapsula las características de un comando ODK
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.ParamsRegex">
+            <summary>
+            Expresión regular para buscar parámetros en una sentencia sql
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.CommandText">
+            <summary>
+            Comando sql
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.Parameters">
+            <summary>
+            Enumeración de parámetros
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.Transaction">
+            <summary>
+            Transacción asociada al comando
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.CommandType">
+            <summary>
+            Tipo de comando
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.Entry">
+            <summary>
+            Entrada de la entidad fuente del comando
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.DbContext">
+            <summary>
+            Contexto al que pertenece el comando
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.Command">
+            <summary>
+            Comando Sql
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.#ctor(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext,System.Collections.Generic.IEnumerable{OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter},System.Data.IDbTransaction,System.Boolean,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="commandText">Comando Sql</param>
+            <param name="dbContext">Contexto de base de datos</param>
+            <param name="parameters">Parámetros en el comando</param>
+            <param name="transaction">Transacción asociada</param>
+            <param name="executeCreateCommand">Valor que indica si se ejecuta la creación de comando</param>
+            <param name="entry">Entrada de entidad fuente del comando</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.#ctor(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext,System.Object,System.Data.IDbTransaction,System.Boolean,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="commandText">Comando Sql</param>
+            <param name="dbContext">Contexto de base de datos</param>
+            <param name="parameters">Parámetros en el comando</param>
+            <param name="transaction">Transacción asociada</param>
+            <param name="executeCreateCommand">Valor que indica si se ejecuta la creación de comando</param>
+            <param name="entry">Entrada de entidad fuente del comando</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.CreateCommand(System.Data.IDbConnection)">
+            <summary>
+            Crea el comando a partir de la definición y el tipo de proveedor sobre la conexión dada
+            </summary>
+            <param name="connection">Conexión sobre la que se creará el comando</param>
+            <returns>Comando creado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition.TranslateParams(System.Data.IDbCommand,System.Collections.Generic.IEnumerable{OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter},OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext)">
+            <summary>
+            Traduce los parámetros de la forma {ParamName} a la correspondiente según el tipo de proveedor 
+            </summary>
+            <param name="cmd">Comando objetivo</param>
+            <param name="parameters">Enumeración de parámetros</param>
+            <param name="dbContext">Contexto</param>
+            <returns>Comando resultado</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions">
+            <summary>
+            Provee métodos extendidos para la
+            inyección del servicio MicroSQL
+            a la colección de servicios de .Net Core
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions.ServiceProvider">
+            <summary>
+            Instancia al proveedor de servicios
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions.AddDbContextInternal``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inyecta un contexto de base de datos
+            a la colección de servicios con una
+            configuración específica
+            </summary>
+            <typeparam name="T">Tipo abstracto</typeparam>
+            <typeparam name="TInstance">Tip de contexto a inyectar</typeparam>
+            <param name="services">Collección de servicios</param>
+            <param name="options">Opciones de configuración del contexto</param>
+            <returns>Colección de servicios</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions.AddDbContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Inyecta un contexto de base de datos
+            a la colección de servicios con una
+            configuración específica
+            </summary>
+            <typeparam name="TInstance">Tip de contexto a inyectar</typeparam>
+            <param name="services">Collección de servicios</param>
+            <param name="configuration">Instancia del archivo de configuración</param>
+            <param name="paramName">Nombre del parámetro en el archivo de configuración</param>
+            <returns>Colección de servicios</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions.AddDbContext``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Inyecta un contexto de base de datos
+            a la colección de servicios con una
+            configuración específica
+            </summary>
+            <typeparam name="T">Tipo abstracto</typeparam>
+            <typeparam name="TInstance">Tip de contexto a inyectar</typeparam>
+            <param name="services">Collección de servicios</param>
+            <param name="configuration">Instancia del archivo de configuración</param>
+            <param name="paramName">Nombre del parámetro en el archivo de configuración</param>
+            <returns>Colección de servicios</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions.AddDbContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inyecta un contexto de base de datos
+            a la colección de servicios con una
+            configuración específica
+            </summary>
+            <typeparam name="TInstance">Tip de contexto a inyectar</typeparam>
+            <param name="services">Collección de servicios</param>
+            <param name="options">Opciones de configuración del contexto</param>
+            <returns>Colección de servicios</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ConfigureServicesExtensions.AddDbContext``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inyecta un contexto de base de datos
+            a la colección de servicios con una
+            configuración específica
+            </summary>
+            <typeparam name="T">Tipo abstracto</typeparam>
+            <typeparam name="TInstance">Tip de contexto a inyectar</typeparam>
+            <param name="services">Collección de servicios</param>
+            <param name="options">Opciones de configuración del contexto</param>
+            <returns>Colección de servicios</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Consts">
+            <summary>
+            Provee constantes del sistema
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Consts.CONNECTIONSTRING_NAME">
+            <summary>
+            Nombre por defecto de la cadena de conexión
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Consts.IsValidPropertyType(System.Type)">
+            <summary>
+            Obtiene un valor que indica si el tipo
+            es válido para ser una propiedad de entidad
+            </summary>
+            <param name="type">Tipo a validar</param>
+            <returns>Valor que indica si es válido</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Consts.IsValidNavigationPropertyType(System.Type)">
+            <summary>
+            Obtiene un valor que indica si el tipo
+            es válido para ser una propiedad de navegación de entidad
+            </summary>
+            <param name="type">Tipo a validar</param>
+            <returns>Valor que indica si es válido</returns>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Consts.EntityValidTypes">
+            <summary>
+            Tipos de datos válidos para las propiedades de una entidad
+            que mapean campos de la tabla
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext">
+            <summary>
+            Clase base que encapsula un contexto de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.TransactionInfo">
+            <summary>
+            Informa ción de la transacción en curso
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.Options">
+            <summary>
+            Opciones de configuración del contexto
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.Builder">
+            <summary>
+            Constructor de artefactos del contexto
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.UseEntityDescriptor">
+            <summary>
+            Valor que indica si se usa el descriptor de entidades
+            en el proceso de serialización
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="options">Opciones de construcción</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.Initialize(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inicializa la instancia de contexto construyendolo
+            según las opciones de configuración
+            </summary>
+            <param name="options">Opciones de construcción</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.QueryImpl``1(OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition)">
+            <summary>
+            Implementación interna de una consulta mapeando el resultado a una entidad de tipo T
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad en la que se mapeará el resultado</typeparam>
+            <param name="command">Definición del comando a ejecutar</param>
+            <returns>Una enumeración del conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteQuery``1(System.String,System.Object)">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad resultado</typeparam>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteQuery``1(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter[])">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad resultado</typeparam>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteQuery(System.String,System.Object)">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteQuery(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter[])">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.BeginTransaction">
+            <summary>
+            Inicia una transacción
+            </summary>
+            <returns>Transacción iniciada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Inicia una transacción
+            </summary>
+            <param name="level">Nivel de aislamiento</param>
+            <returns>Transacción iniciada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.CommitChanges">
+            <summary>
+            Confirma los cambios efectuados por la ejecución de los comandos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.RollbackChanges">
+            <summary>
+            Descarta los cambios efectuados por la ejecución de los comandos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.NonQueryImpl(OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition)">
+            <summary>
+            Implementación interna de la ejecución de un comando SQL
+            </summary>
+            <param name="command">Definición del comando a ejecutar</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteNonQuery(System.Data.IDbCommand)">
+            <summary>
+            Ejecuta un comando de acción como Insert, Update, Delete y obtiene el
+            número de registros afectados
+            </summary>
+            <param name="command">Comando a ejecutar</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteNonQuery(System.String,System.Object)">
+            <summary>
+            Ejecuta un comando de acción como Insert, Update, Delete y obtiene el
+            número de registros afectados
+            </summary>
+            <param name="nonQuery">Comando a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.ExecuteNonQuery(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter[])">
+            <summary>
+            Ejecuta un comando de acción como Insert, Update, Delete y obtiene el
+            número de registros afectados
+            </summary>
+            <param name="nonQuery">Comando a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext.Dispose">
+            <summary>
+            Destruye la instancia
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions">
+            <summary>
+            Encapsula las opciones de configuración
+            para un contexto de bases de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.DbType">
+            <summary>
+            Tipo de conextto de base de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.ConnectionString">
+            <summary>
+            Cadena de conexión a la base de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.CommandTimeout">
+            <summary>
+            Tiempo de espera antes para la ejecución de comandos sql
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.Create(System.String,System.String)">
+            <summary>
+            Crea una nueva instancia de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions"/>
+            </summary>
+            <param name="dbType">Tipo de contexto</param>
+            <param name="connectionString">Cadena de conexión</param>
+            <returns>Instancia de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions"/></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.Create(System.Int32,System.String)">
+            <summary>
+            Crea una nueva instancia de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions"/>
+            </summary>
+            <param name="dbType">Tipo de contexto</param>
+            <param name="connectionString">Cadena de conexión</param>
+            <returns>Instancia de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions"/></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions.Create(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextType,System.String)">
+            <summary>
+            Crea una nueva instancia de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions"/>
+            </summary>
+            <param name="dbType">Tipo de contexto</param>
+            <param name="connectionString">Cadena de conexión</param>
+            <returns>Instancia de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions"/></returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbDefaultConfig">
+            <summary>
+            Encapsula la configuración por defecto
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbDefaultConfig.CommandTimeout">
+            <summary>
+            Tiempo de espera antes para la ejecución de comandos sql
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbDefaultConfig.ServiceProvider">
+            <summary>
+            Proveedor de servicios
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DeserializerCacheStore">
+            <summary>
+            Almacena los serializadores de tipos
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DeserializerCacheStore._cache">
+            <summary>
+            Caché de deserializadores por tipo
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DeserializerCacheStore.GetDeserializer``1(System.Boolean)" -->
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DeserializerCacheStore.CreateGenericDeserializer``1(System.Boolean)">
+            <summary>
+            Crea un deserializador para un tipo object cualquiera
+            </summary>
+            <typeparam name="T">Tipo del objeto a deserializar</typeparam>
+            <param name="useEntityDescriptor">Valor que indica si se usa el descriptor de entidad
+            o se realiza la serialización de forma clásica</param>
+            <returns>Función deserializadora</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DeserializerCacheStore.CreateDynamicRowDeserializer">
+            <summary>
+            Crea un deserializador para el tipo DynamicRow
+            </summary>
+            <returns>Función deserializadora</returns>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames.Fields">
+            <summary>
+            Obtiene el arreglo de nombres de propiedades
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames._fieldNamesLookup">
+            <summary>
+            Diccionario de los indices de las propiedades
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames.FieldCount">
+            <summary>
+            Obtiene la cantidad de propiedades que hay
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames.#ctor(System.String[])">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="fieldNames">Arreglo de nombres de propiedades</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames.IndexOfName(System.String)">
+            <summary>
+            Obtiene el indice de un nombre de propiedad
+            </summary>
+            <param name="name">Nombre de la propiedad</param>
+            <returns>Indice en el que se encuentra</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames.AddField(System.String)">
+            <summary>
+            Agrega un nuevo nombre de propiedad al arreglo
+            </summary>
+            <param name="name">Nombre de la nueva propiedad</param>
+            <returns>El indice que ocupa el nuevo nombre</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Dynamic.FieldNames.FieldExists(System.String)">
+            <summary>
+            Obtiene un valor que indica si el campo existe
+            </summary>
+            <param name="name">Nombre del campo</param>
+            <returns>Valor que indica si el campo existe</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextType">
+            <summary>
+            Tipo de conexto de base de datos
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextType.SqlServer">
+            <summary>
+            Microsoft Sql Server
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextType.Oracle">
+            <summary>
+            Oracle
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextType.MySql">
+            <summary>
+            MySql
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextType.PostgreSql">
+            <summary>
+            PostgreSql
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.EntityAlreadyExistsException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre
+            cuando se intenta agregar una entidad que ya existe 
+            con estado <see cref="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState.Unchanged"/> en el contexto
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.EntityAlreadyExistsException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.ForeignPropertyDontExistsException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando se
+            referencia una propiedad foránea que no existe en  la entidad
+            referenciada
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.ForeignPropertyDontExistsException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidDbContextTypeException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre
+            cuando se configura un tipo de contexto inválido
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidDbContextTypeException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidEntityKeyException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre
+            cuando se define una entidad con más de una llave
+            primaria <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyAttribute"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidEntityKeyException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidForeignPropertyException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando
+            se asigna una propiedad foránea cuyo tipo
+            de dato no es válido o no corresponde con la propiedad local
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidForeignPropertyException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidIncludeOperationException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando se
+            intenta realizar una inclusión en una consulta a un nivel
+            no permitido
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidIncludeOperationException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidNavigationPropertyException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando
+            se asigna una propiedad de navegación que cuyo tipo
+            de dato no es válido
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidNavigationPropertyException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidNullableParameterException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando
+            se asigna un valor nulo a un parámetro. Se debe usar el 
+            tipo <see cref="T:System.Nullable`1"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidNullableParameterException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidOperationEntityEntryException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre
+            cuando se intenta realizar una operación CRUD
+            que no es coherénte con el estado actual de la entidad
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidOperationEntityEntryException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidPropertyExpressionException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando
+            se proporciona una expresión de propiedad inválida
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidPropertyExpressionException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidTypeEntityKeyException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre
+            cuando el tipo de dato de la propiedad marcada
+            como <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyAttribute"/> no se ajusta al
+            tipo de llave <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyType"/> configurada
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.InvalidTypeEntityKeyException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.NavigationPropertyDontExistsException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando se
+            referencia una propiedad de navegación que no existe en  la entidad
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.NavigationPropertyDontExistsException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.NotInitializedRepositoryException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando
+            se intenta usar un repositorio que ún no ha sido inicializado
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.NotInitializedRepositoryException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.UndefinedParameterException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre
+            cuando se usa un parámetro que no ha sifo definido
+            dentro de un comando Sql
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.UndefinedParameterException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.UnsupportedExpressionException">
+            <summary>
+            Encapsula los datos de la excepción que ocurre cuando
+            se proporciona una expresión no soportada en una consulta
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Exceptions.UnsupportedExpressionException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="message">Mensaje de la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Extensions">
+            <summary>
+            Provee métodos extendidos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Extensions.ToMD5(System.String)">
+            <summary>
+            Convierte la cadena en su correspondiente hash MD5
+            </summary>
+            <param name="str">Objeto que extiende el método</param>
+            <returns>Hash MD5 resultado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Extensions.Compress(System.String)">
+            <summary>
+            Comprime la cadena de texto
+            </summary>
+            <param name="inputStr">Cadena de texto a comprimir</param>
+            <returns>Cadena de testo comprimida</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Extensions.Decompress(System.String)">
+            <summary>
+            Descomprime una cadena de texto comprimida con <see cref="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Extensions.Compress(System.String)"/>
+            </summary>
+            <param name="inputStr">Cadena a descomprimir</param>
+            <returns>Cadena descomprimida</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext">
+            <summary>
+            Define las propiedades y métodos de
+            un contexto de base de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.Options">
+            <summary>
+            Opciones de configuración del contexto
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.TransactionInfo">
+            <summary>
+            Informa ción de la transacción en curso
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.Builder">
+            <summary>
+            Constructor de artefactos del contexto
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.BeginTransaction">
+            <summary>
+            Inicia una transacción
+            </summary>
+            <returns>Transacción iniciada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Inicia una transacción
+            </summary>
+            <param name="level">Nivel de aislamiento</param>
+            <returns>Transacción iniciada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.CommitChanges">
+            <summary>
+            Confirma los cambios efectuados por la ejecución de los comandos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.RollbackChanges">
+            <summary>
+            Descarta los cambios efectuados por la ejecución de los comandos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteQuery``1(System.String,System.Object)">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad resultado</typeparam>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteQuery``1(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter[])">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad resultado</typeparam>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteQuery(System.String,System.Object)">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteQuery(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter[])">
+            <summary>
+            Ejecuta una consulta sql
+            </summary>
+            <param name="query">Consulta a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteNonQuery(System.Data.IDbCommand)">
+            <summary>
+            Ejecuta un comando de acción como Insert, Update, Delete y obtiene el
+            número de registros afectados
+            </summary>
+            <param name="command">Comando a ejecutar</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteNonQuery(System.String,System.Object)">
+            <summary>
+            Ejecuta un comando de acción como Insert, Update, Delete y obtiene el
+            número de registros afectados
+            </summary>
+            <param name="nonQuery">Comando a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.IDbContext.ExecuteNonQuery(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter[])">
+            <summary>
+            Ejecuta un comando de acción como Insert, Update, Delete y obtiene el
+            número de registros afectados
+            </summary>
+            <param name="nonQuery">Comando a ejecutar</param>
+            <param name="parameters">Parámetros de la consulta</param>
+            <returns>Cantidad de registros afectados</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.MapperTypes">
+            <summary>
+            Mapeador de tipos
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.MapperTypes.TypeMap">
+            <summary>
+            Mapa de tipos .Net a ADO
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext">
+            <summary>
+            Clase base que encapsula un contexto de datos de negocio
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.StateManager">
+            <summary>
+            Administrador de estados de entidades
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.InternalDbContext">
+            <summary>
+            Contexto interno
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="options">Opciones de construcción</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.GetDbContext(System.Boolean)">
+            <summary>
+            Obtiene el contexto interno
+            </summary>
+            <param name="useEntityDescriptor">Valor que indica si se usa el descriptor de entidades
+            en el proceso de serialización</param>
+            <returns>Contexto interno</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.SaveChanges">
+            <summary>
+            Persiste los cambios realizados en las
+            entidades manejadas en el contexto
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.SaveChangesAsync">
+            <summary>
+            Persiste los cambios realizados en las
+            entidades manejadas en el contexto de forma asíncrona
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.AttachEntities(System.Collections.Generic.IEnumerable{System.Object},OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState)">
+            <summary>
+            Adjunta entidades al administrador de estados
+            </summary>
+            <param name="entities">Entidades</param>
+            <param name="state">Estado con que se adjuntan las entidades</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.Dispose">
+            <summary>
+            Destruye la instancia
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext.Dispose(System.Boolean)">
+            <summary>
+            Destruye la instancia
+            </summary>
+            <param name="disposing">Valor que indica si se esta destruyendo</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContextExtensions">
+            <summary>
+            Provee metodos extendidos para <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContextExtensions.GetRepository``1(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Obtiene un repositorio
+            </summary>
+            <typeparam name="TRepository">Tipo del repositorio a obtener</typeparam>
+            <param name="context">Contexto quien extiende el método</param>
+            <returns>Repositorio</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContextExtensions.GetDomainService``1(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Obtiene un servicio de dominio
+            </summary>
+            <typeparam name="TDomainService">Tipo del servicio a obtener</typeparam>
+            <param name="context">Contexto quien extiende el método</param>
+            <returns>Servicio</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AppService">
+            <summary>
+            Clase base de los servicios de aplicación
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AppService.Context">
+            <summary>
+            Contexto de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AppService.Logger">
+            <summary>
+            Obtiene el registrador de eventos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AppService.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext,System.IO.StreamWriter)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="context">Contexto de datos</param>
+            <param name="logger">Regitrador de eventos</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AppService.HandleException``1(System.Exception,``0)">
+            <summary>
+            Da manejo a un excepción
+            </summary>
+            <param name="ex">Excepción a manejar</param>
+            <param name="result">Resultado</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.DomainService">
+            <summary>
+            Clase base de un servicio de dominio
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.DomainService.SetContext(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Asigna el contexto de datos a todos los repositorios del servicio
+            </summary>
+            <param name="context">Contexto de datos</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.DomainService.Dispose">
+            <summary>
+            Destruye la instancia
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry">
+            <summary>
+            Envuelve una entidad
+            manejando su estado
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.Key">
+            <summary>
+            Llave de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.Descriptor">
+            <summary>
+            Descriptor de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.OriginalValues">
+            <summary>
+            Valores originales de la entidad cuando se consultó
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.CurrentValues">
+            <summary>
+            Obtiene los valores actuales de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.Entity">
+            <summary>
+            Entidad envuelta
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.State">
+            <summary>
+            Estado de la entidad
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.#ctor(System.Object,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="entity">Instancia de la entidad</param>
+            <param name="state">Estado de la entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.UpdateInstance(System.Object,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState)">
+            <summary>
+            Actualiza la instancia de la entidad
+            </summary>
+            <param name="entity">Entidad</param>
+            <param name="state">Estado</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.AcceptChanges">
+            <summary>
+            Acepta los cambios realizados y se actualiza
+            los valores originales con los valores actuales
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.SetState(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState)">
+            <summary>
+            Asigna un nuevo estado a la entidad
+            </summary>
+            <param name="newState">Nuevo estado a asignar</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.ExecuteUnchangedState">
+            <summary>
+            Ejecuta la lógica necesaria
+            para dejar la entidad sin cambios
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.ExecuteModifiedState">
+            <summary>
+            Ejecuta la lógica necesaria
+            para dejar la entidad modificada
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry.ExecuteDeletedState">
+            <summary>
+            Ejecuta la lógica necesaria
+            para dejar la entidad eliminada
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState">
+            <summary>
+            Estado de seguimiento de la entidad
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState.Unchanged">
+            <summary>
+            Sin cambios
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState.Added">
+            <summary>
+            Agregada nueva
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState.Modified">
+            <summary>
+            Modificada
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState.Removed">
+            <summary>
+            Eliminada
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot">
+            <summary>
+            Encapsula los valor de las proiedades de una entidad
+            capturando su estado de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.Item(System.String)">
+            <summary>
+            Obtiene el valor de una propiedad
+            </summary>
+            <param name="propertyName">Nombre de la propiedad</param>
+            <returns>Valor de la propiedad</returns>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.Properties">
+            <summary>
+            Propiedades con los valores originales
+            del estado inicial de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.FootPrint">
+            <summary>
+            Obtiene la huella que identifica el estado de la entidad
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.#ctor(System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="entity">Instancia de la entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.UpdateInstance(System.Object)">
+            <summary>
+            Actualiza la instancia de la entidad
+            </summary>
+            <param name="entity">Entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.GetValue(System.String)">
+            <summary>
+            Obtiene el valor de una propiedad
+            </summary>
+            <param name="propertyName">Nombre de la propiedad</param>
+            <returns>Valor de la propiedad</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityStateSnapshot.GetValue``1(System.String)">
+            <summary>
+            Obtiene el valor de una propiedad
+            </summary>
+            <typeparam name="T">Tipo de la propiedad a obtener</typeparam>
+            <param name="propertyName">Nombre de la propiedad</param>
+            <returns>Valor de la propiedad</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IAppService">
+            <summary>
+            Define los atributos y métodos de un servicio de aplicación
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IAppService.Context">
+            <summary>
+            Contexto de datos
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IAppService.Logger">
+            <summary>
+            Obtiene el registrador de eventos
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IDomainService">
+            <summary>
+            Define los atributos y métodos de un servicio de dominio
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IDomainService.SetContext(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Asigna el contexto de datos a todos los repositorios del servicio
+            </summary>
+            <param name="context">Contexto de datos</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder">
+            <summary>
+            Constructor de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.CommandDefinition"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.Build(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext,System.Boolean)">
+            <summary>
+            Construye el listado de comandos listos para ejecutar
+            </summary>
+            <param name="stateManager">Administrador de estados</param>
+            <param name="context">Contexto de datos</param>
+            <param name="withCreateCommand">Valor que indica si las definiciones van a ejecutar la creación de comandos</param>
+            <returns>Lista de comandos</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.BuildCommand(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext,System.Boolean)">
+            <summary>
+            Construye un comando a partir de una entrada de entidad
+            </summary>
+            <param name="entity">Entrada de entidad</param>
+            <param name="context">Contexto de datos</param>
+            <param name="withCreateCommand">Valor que indica si se crea el comando de una</param>
+            <returns>Definición de comando</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.BuildInsertCommand(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext,System.Boolean)">
+            <summary>
+            Construye un comando de inserción
+            </summary>
+            <param name="entity">Entrada de entidad</param>
+            <param name="context">Contexto de datos</param>
+            <param name="withCreateCommand">Valor que indica si se crea el comando de una</param>
+            <returns>Definición de comando</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.CalcUniqueidentifierIdKey(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry)">
+            <summary>
+            Calcula el Id de la llave primaria
+            </summary>
+            <param name="entity">Entrada de entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.CalcAutoincrementIdKey(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext)">
+            <summary>
+            Calcula el Id de la llave primaria
+            </summary>
+            <param name="entity">Entrada de entidad</param>
+            <param name="context">Contexto de datos</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.BuildUpdateCommand(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext,System.Boolean)">
+            <summary>
+            Construye un comando de actualización
+            </summary>
+            <param name="entity">Entrada de entidad</param>
+            <param name="context">Contexto de datos</param>
+            <param name="withCreateCommand">Valor que indica si se crea el comando de una</param>
+            <returns>Definición de comando</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.CommandDefinitionBuilder.BuildDeleteCommand(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext,System.Boolean)">
+            <summary>
+            Construye un comando de eliminación
+            </summary>
+            <param name="entity">Entrada de entidad</param>
+            <param name="context">Contexto de datos</param>
+            <param name="withCreateCommand">Valor que indica si se crea el comando de una</param>
+            <returns>Definición de comando</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor">
+            <summary>
+            Encapsula la descripción de una entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.EntityType">
+            <summary>
+            Tipo de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.TableName">
+            <summary>
+            Nombre de la tabla
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.Properties">
+            <summary>
+            Propiedades de la entidad mapeadas por su nombre de campo
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.Relationships">
+            <summary>
+            Lista de relaciones
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.#ctor(System.Type)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="entityType">Tipo de la entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.GetPropertyByColumnName(System.String)">
+            <summary>
+            Obtiene el descriptor de la propiedad por su nombre de columna
+            </summary>
+            <param name="columnName">Nombre de la columna</param>
+            <returns>Descriptor de la propiedad</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.GetPropertyByName(System.String)">
+            <summary>
+            Obtiene el descriptor de la propiedad por su nombre de la propiedad
+            </summary>
+            <param name="propertyName">Nombre de la propiedad</param>
+            <returns>Descriptor de la propiedad</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.EnsureEntityKey">
+            <summary>
+            Asegura que la entidad tenga al menos
+            una propiedad marcada como llave primaria
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.GetProperties">
+            <summary>
+            Obtiene las propiedades
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptor.GetRelationships">
+            <summary>
+            Obtiene las relaciones a otras entidades
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptorMapper">
+            <summary>
+            Mapeador de descripciones de entidades
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptorMapper.Descriptors">
+            <summary>
+            Mapa de descriptores de entidades
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityDescriptorMapper.GetOrAddDescriptor(System.Type)">
+            <summary>
+            Obtiene o agrega un descriptor para un tipo de entidad
+            </summary>
+            <param name="entityType">Tipo de entidad</param>
+            <returns>Descriptor de la entidad</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey">
+            <summary>
+            Encapsula los datos de la llave primaria de
+            una entidad, creando un UId para identificar la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.Index">
+            <summary>
+            Indice de la llave en el
+            administrador de estados
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.InstanceId">
+            <summary>
+            Id de la instancia
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.Type">
+            <summary>
+            Tipo de la llave
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.Properties">
+            <summary>
+            Propiedades que componen la llave
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.Entry">
+            <summary>
+            Entrada de entidad que define la llave
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,System.Int64)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="entry">Entrada de entidad que define la llave</param>
+            <param name="index">Indice de la llave en el administrador de estados</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.UpdateInstance(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,System.Int64)">
+            <summary>
+            Actualiza la instancia de la entidad
+            </summary>
+            <param name="entry">Entidad</param>
+            <param name="index">Indice</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKey.GetKeyProperties">
+            <summary>
+            Obtiene las propiedades marcada como llave de la entidad
+            </summary>
+            <returns>Lista de propiedades</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKeyEqualityComparer">
+            <summary>
+            Comparador de llaves de entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKeyEqualityComparer.Instance">
+            <summary>
+            Obtiene la unica instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.EntityKeyEqualityComparer.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers">
+            <summary>
+            Provee métodos de ayuda
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetTableName(System.Object)">
+            <summary>
+            Obtiene el nombre de la tabla de la entidad
+            </summary>
+            <param name="entity">Entidad</param>
+            <returns>Nombre de la tabla</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetTableName``1">
+            <summary>
+            Obtiene el nombre de la tabla de la entidad
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad</typeparam>
+            <returns>Nombre de la tabla</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetTableName(System.Type)">
+            <summary>
+            Obtiene el nombre de la tabla de la entidad
+            </summary>
+            <param name="entityType">Tipo de la entidad</param>
+            <returns>Nombre de la tabla</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetColumnName(System.Reflection.PropertyInfo)">
+            <summary>
+            Obtiene el nombre de la columna en la propiedad
+            </summary>
+            <param name="property">Propiedad</param>
+            <returns>Nombre de la columna</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetColumns(System.Object)">
+            <summary>
+            Obtiene la enumeración de columnas a 
+            partir de las propiedades de una entidad
+            </summary>
+            <param name="entity">Entidad</param>
+            <returns>Columnas</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetColumns(System.Type)">
+            <summary>
+            Obtiene la enumeración de columnas a 
+            partir de las propiedades de una entidad
+            </summary>
+            <param name="entityType">Tipo de la entidad</param>
+            <returns>Columnas</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.GetColumns``1">
+            <summary>
+            Obtiene la enumeración de columnas a 
+            partir de las propiedades de una entidad
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad</typeparam>
+            <returns>Columnas</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.Helpers.WriteException(System.Exception,System.Text.StringBuilder@)">
+            <summary>
+            Escribe recursivamente toda la pila de llamados
+            </summary>
+            <param name="ex">Excepción a escribir</param>
+            <param name="sb">Constructor de cadena usado para escribir la excepción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1">
+            <summary>
+            Provee métodos para indexar una colección de datos tipo T
+            y realizar búsquedas más rapidas
+            </summary>
+            <typeparam name="T">Tipo de dato de la colección</typeparam>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.NonIndexedList">
+            <summary>
+            Lista de datos no indexados
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedList">
+            <summary>
+            Lista de datos indexados
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.Indexes">
+            <summary>
+            Indices
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="source">Fuente de datos</param>
+            <param name="indexes">Indices usados para organizar los datos</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.FindValue(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object)">
+            <summary>
+            Busca un valor sobre una propiedad
+            </summary>
+            <param name="property">Expresión de la propiedad sobre la que se realiza la busqueda</param>
+            <param name="value">Valor a buscar</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.BuildIndexes(System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Construye los indices
+            </summary>
+            <param name="indexes">Indices como expresiones</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.PropertyName(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Obtiene el nombre de la propiedad en la expresión
+            </summary>
+            <param name="expression">Expresión a evaluar</param>
+            <returns>Nombre de la propiedad en base64</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.ToList">
+            <summary>
+            Obtiene una lista de la colección
+            </summary>
+            <returns>Lista de tipo T</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult">
+            <summary>
+            Encapsula un conjunto de resultados de la busqueda sobre una colección indexada
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult._indexedCollection">
+            <summary>
+            Instancia a la colección de datos
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult._resultSet">
+            <summary>
+            Conjunto de resultados
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="indexedCollection">Instancia a la colección de datos</param>
+            <param name="resultSet">Conjunto de resultados</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult.Or(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object)">
+            <summary>
+            Retorna un subconjunto de resultados donde los elementos cumplan cualquiera de los dos criterios
+            </summary>
+            <param name="property">Expresión de la propiedad sobre la que se realiza la busqueda</param>
+            <param name="value">Valor a buscar</param>
+            <returns>Subconjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult.And(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Object)">
+            <summary>
+            Retorna un subconjunto de resultados donde los elementos cumplan con ambos criterios
+            </summary>
+            <param name="property">Expresión de la propiedad sobre la que se realiza la busqueda</param>
+            <param name="value">Valor a buscar</param>
+            <returns>Subconjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.IndexedCollection`1.IndexedResult.ToList">
+            <summary>
+            Obtiene una lista de la colección
+            </summary>
+            <returns>Lista de tipo T</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.InternalDbContextImpl">
+            <summary>
+            Implementación interna de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContext"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.InternalDbContextImpl.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.InternalDbContextImpl.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.DbContextOptions)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="options">Opciones de construcción</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.InternalExtensions">
+            <summary>
+            Provee métodos extendidos internos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.InternalExtensions.ToParameters(System.Collections.Generic.IEnumerable{OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot})">
+            <summary>
+            Convierte una enumeración de propiedades
+            a una de parámetros
+            </summary>
+            <param name="props">Propiedades</param>
+            <returns>Parámetros</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1">
+            <summary>
+            Ejecuta una visita recursiva a todo el arbol de una expresión
+            para generar un comando Sql
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1._sqlCompiler">
+            <summary>
+            Compilador Sql
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.Query">
+            <summary>
+            Comando sql resultado
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="sqlCompiler">Compilador Sql</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.GetParameters(System.Linq.Expressions.Expression)">
+            <summary>
+            Obtiene los parámetros de la consulta
+            </summary>
+            <param name="node">Expresión a evaluar</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.Visit(System.Linq.Expressions.Expression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitBinary(System.Linq.Expressions.BinaryExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitBlock(System.Linq.Expressions.BlockExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitCatchBlock(System.Linq.Expressions.CatchBlock)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitConditional(System.Linq.Expressions.ConditionalExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitConstant(System.Linq.Expressions.ConstantExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitDebugInfo(System.Linq.Expressions.DebugInfoExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitDefault(System.Linq.Expressions.DefaultExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitDynamic(System.Linq.Expressions.DynamicExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitElementInit(System.Linq.Expressions.ElementInit)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitExtension(System.Linq.Expressions.Expression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitGoto(System.Linq.Expressions.GotoExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitIndex(System.Linq.Expressions.IndexExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitInvocation(System.Linq.Expressions.InvocationExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitLabel(System.Linq.Expressions.LabelExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitLabelTarget(System.Linq.Expressions.LabelTarget)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitLambda``1(System.Linq.Expressions.Expression{``0})">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitListInit(System.Linq.Expressions.ListInitExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitLoop(System.Linq.Expressions.LoopExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMember(System.Linq.Expressions.MemberExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMemberBinding(System.Linq.Expressions.MemberBinding)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMemberInit(System.Linq.Expressions.MemberInitExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitNew(System.Linq.Expressions.NewExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitNewArray(System.Linq.Expressions.NewArrayExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitRuntimeVariables(System.Linq.Expressions.RuntimeVariablesExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitSwitch(System.Linq.Expressions.SwitchExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitSwitchCase(System.Linq.Expressions.SwitchCase)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitTry(System.Linq.Expressions.TryExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitTypeBinary(System.Linq.Expressions.TypeBinaryExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitUnary(System.Linq.Expressions.UnaryExpression)">
+            <summary>
+            Genera comandos
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.LinqToSql.LinqToSqlExpressionVisitor`1.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Genera los parámetros
+            </summary>
+            <param name="node">Nodo a visitar</param>
+            <returns>Expresión a continuar</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor">
+            <summary>
+            Encapsula la descripción de una propiedad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.Property">
+            <summary>
+            Información de la propiedad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.Name">
+            <summary>
+            Nombre de la propiedad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.ColumnName">
+            <summary>
+            Nombre de la columna en la tabla
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.IsKey">
+            <summary>
+            Valor que indica si la propiedad compone
+            la llave primaria de la entidad y es la principal
+            marcada como <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyAttribute"/>
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.IsKeyPart">
+            <summary>
+            Valor que indica si la propiedad compone
+            la llave primaria de la entidad y es auxiliar
+            marcada como <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Attributes.KeyPartAttribute"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="property">Propiedad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.SetIsKey">
+            <summary>
+            Asigna un valor que indica si la propiedad
+            hace parte de la llave primaria de la entidad
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor.SetIsKeyPart">
+            <summary>
+            Asigna un valor que indica si la propiedad
+            hace parte de la llave primaria de la entidad
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot">
+            <summary>
+            Captura el valor de una propiedade de una entidad
+            en un momento dado
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot.Descriptor">
+            <summary>
+            Descriptor de la propiedad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot.Value">
+            <summary>
+            Valor de la propiedad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot.FootPrint">
+            <summary>
+            Huella única que identifica el valor
+            de la propiedad
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertyDescriptor,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="descriptor">Información de la propiedad</param>
+            <param name="instance">Instancia del objeto</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot.SetFootPrint">
+            <summary>
+            Asigna la huella única
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot.GetObjectFootPrint(System.Object)">
+            <summary>
+            Obtiene la huella de un objeto
+            </summary>
+            <param name="obj">Objeto a obtener</param>
+            <returns>Huella del objeto</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.ReferenceEqualityComparer">
+            <summary>
+            Comparador de refecrencias
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.ReferenceEqualityComparer.Instance">
+            <summary>
+            Obtiene la unica instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.ReferenceEqualityComparer.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager">
+            <summary>
+            Administra el estado de las entidades
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager._lock">
+            <summary>
+            Candado para bloqueo de codigo
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager._currentIndex">
+            <summary>
+            Indice actual de entidades
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager._referenceMap">
+            <summary>
+            Referencias mapeadas en el contexto
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager._relationshipMap">
+            <summary>
+            Mapa de relaciones entre entidades
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.TryGetRelationship``2(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship@)">
+            <summary>
+            Trata de obtener la relación entre dos entidades
+            </summary>
+            <typeparam name="TPrincipal">Tipo de la entidad principal</typeparam>
+            <typeparam name="TForeign">Tipo de la entidad foránea</typeparam>
+            <param name="relationship">Relación obtenida</param>
+            <returns>Valor que indica si se obtuvo la relación</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.TryGetRelationship(System.Type,System.Type,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship@)">
+            <summary>
+            Trata de obtener la relación entre dos entidades
+            </summary>
+            <param name="principalEntity">Tipo de la entidad principal</param>
+            <param name="foreignEntity">Tipo de la entidad foránea</param>
+            <param name="relationship">Relación obtenida</param>
+            <returns>Valor que indica si se obtuvo la relación</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.DetectChanges">
+            <summary>
+            Detecta cambios en las entidades marcadas como <see cref="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState.Unchanged"/>
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.AddOrUpdateEntry(System.Object,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState)">
+            <summary>
+            Agrega una nueva entrada con un estado espesífico
+            </summary>
+            <param name="entity">Entidad a agregar</param>
+            <param name="state">Estado de la entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.UpdateRelationshipsData(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry)">
+            <summary>
+            Actualiza los datos de los campos relacionados
+            </summary>
+            <param name="entry">Entidad principal</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.EnsureRelationships(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry)">
+            <summary>
+            Asegura las relaciones encontradas en la entrada de la entidad
+            </summary>
+            <param name="entry">Entrada de la entidad</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.UpdateInstanceEntry(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityEntry,System.Object,OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.EntityState)">
+            <summary>
+            Actualiza el estado de una entrada de entidad así
+            como su instancia y valores
+            </summary>
+            <param name="entry">Entrada de entidad</param>
+            <param name="entity">Nueva instancia</param>
+            <param name="state">Nuevo estado</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.GetNextIndex">
+            <summary>
+            Obtiene el proximo indice
+            </summary>
+            <returns>Proximo indice</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.CleanEntries">
+            <summary>
+            Limpia todas las entradas en el administrador
+            de estados
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.DiscardChanges">
+            <summary>
+            Descarta todos los cambios que se hayan realizado
+            sobre las entidades en el contexto
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.AcceptChanges">
+            <summary>
+            Acepta los cambios realizados en las entidades.
+            Al hacerlo, las entidades agregadas y modificadas pasan a estar sin camnios
+            y las eliminadas son quitadas de mapeador de referencias
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.GetUnchangedEntities">
+            <summary>
+            Obtiene una lista de las entidades sin cambios
+            en el administrador de estados
+            </summary>
+            <returns>Lista de entidades</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.GetAddedEntities">
+            <summary>
+            Obtiene una lista de las entidades para inserción
+            en el administrador de estados
+            </summary>
+            <returns>Lista de entidades</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.GetModifiedEntities">
+            <summary>
+            Obtiene una lista de las entidades marcadas como modificadas
+            en el administrador de estados
+            </summary>
+            <returns>Lista de entidades</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.GetDeletedEntities">
+            <summary>
+            Obtiene una lista de las entidades marcadas para eliminación
+            en el administrador de estados
+            </summary>
+            <returns>Lista de entidades</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.StateManager.GetEntitiesToProcess">
+            <summary>
+            Obtiene la lista de las entidade para
+            procesar en la transacción en orden de ejecución
+            </summary>
+            <returns>Lista de entidades</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository">
+            <summary>
+            Define los atributos y comportamientos de un repositorio
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository.Context">
+            <summary>
+            Obtiene el contexto de datos de negocio
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository.Initialize(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Inicializa el repositorio con el contexto
+            </summary>
+            <param name="context">Contexto de datos al que pertenece el repositorio</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1">
+            <summary>
+            Define los atributos y comportamientos de un repositorio genérico
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad de negocio</typeparam>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.Add(`0)">
+            <summary>
+            Agrega una nueva entidad en el repositorio de datos
+            </summary>
+            <param name="entity">Entidad a agregar</param>
+            <returns>Entidad agregada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.Modify(`0)">
+            <summary>
+            Modifica una entidad en el repositorio de datos
+            </summary>
+            <param name="entity">Entidad a modificar</param>
+            <returns>Entidad modificada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.Remove(`0)">
+            <summary>
+            Remueve una entidad en el repositorio de datos
+            </summary>
+            <param name="entity">Entidad a remover</param>
+            <returns>Entidad removida</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.List">
+            <summary>
+            Lista todas las entidades en el repositorio de datos
+            </summary>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.List(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Lista las entidades que cumplen con la expresión
+            </summary>
+            <param name="expression">Expresión de búsqueda</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.List(System.String,System.Object)">
+            <summary>
+            Lista las entidades en el repositorio de datos que cumplan con la condición <paramref name="rawWhere"/>
+            </summary>
+            <param name="rawWhere">Condición WHERE cruda sin incluir la palabra reservada WHERE</param>
+            <param name="parameters">Objeto de parámetros usados en la condición</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.AddAsync(`0)">
+            <summary>
+            Agrega una nueva entidad en el repositorio de datos de forma asíncrona
+            </summary>
+            <param name="entity">Entidad a agregar</param>
+            <returns>Entidad agregada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.ModifyAsync(`0)">
+            <summary>
+            Modifica una entidad en el repositorio de datos de forma asíncrona
+            </summary>
+            <param name="entity">Entidad a modificar</param>
+            <returns>Entidad modificada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.RemoveAsync(`0)">
+            <summary>
+            Remueve una entidad en el repositorio de datos de forma asíncrona
+            </summary>
+            <param name="entity">Entidad a remover</param>
+            <returns>Entidad removida</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.ListAsync">
+            <summary>
+            Lista todas las entidades en el repositorio de datos
+            </summary>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.ListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Lista las entidades que cumplen con la expresión
+            </summary>
+            <param name="expression">Expresión de búsqueda</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.IRepository`1.ListAsync(System.String,System.Object)">
+            <summary>
+            Lista las entidades en el repositorio de datos que cumplan con la condición <paramref name="rawWhere"/>
+            </summary>
+            <param name="rawWhere">Condición WHERE cruda</param>
+            <param name="parameters">Objeto de parámetros usados en la condición</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship">
+            <summary>
+            Encapsula los datos de la relación
+            entre dos entidades
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship.PrincipalEntity">
+            <summary>
+            Entidad principal o cabecera
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship.ForeignEntity">
+            <summary>
+            Entidad foránea o detalle
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship.NavigationProperty">
+            <summary>
+            Propiedad de navegación en la entidad foránea
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship.Properties">
+            <summary>
+            Propiedades relacionadas
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Relationship.#ctor(System.Type,System.Type,System.Reflection.PropertyInfo,System.Collections.Generic.List{OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.PropertyPair})">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="principalEntity">Entidad principal o cabecera</param>
+            <param name="foreignEntity">Entidad foránea o detalle</param>
+            <param name="navigationProperty">Propiedad de navegación en la entidad foránea</param>
+            <param name="properties">Propiedades relacionadas</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.PropertyPair">
+            <summary>
+            Encapsula las propiedades relacionadas entre dos entidades
+            por medio de su clave
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.PropertyPair.PrincipalProperty">
+            <summary>
+            Propiedad en entidad principal
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.PropertyPair.ForeignProperty">
+            <summary>
+            Propiedad en entidad foránea
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.PropertyPair.#ctor(System.Reflection.PropertyInfo,System.Reflection.PropertyInfo)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="principalProperty">Propiedad en entidad principal</param>
+            <param name="foreignProperty">Propiedad en entidad foránea</param>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1">
+            <summary>
+            Repositorio base
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad del repositorio</typeparam>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1._descriptor">
+            <summary>
+            Descriptor de la entidad
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.Context">
+            <summary>
+            Contexto de datos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="context">Contexto de datos</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.Initialize(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext)">
+            <summary>
+            Inicializa el repositorio
+            </summary>
+            <param name="context">Contexto de datos</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.EnsureInitialized">
+            <summary>
+            Asegura que el repositorio haya sido
+            inicializado
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.Add(`0)">
+            <summary>
+            Agrega una nueva entidad en el repositorio de datos
+            </summary>
+            <param name="entity">Entidad a agregar</param>
+            <returns>Entidad agregada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.Modify(`0)">
+            <summary>
+            Modifica una entidad en el repositorio de datos
+            </summary>
+            <param name="entity">Entidad a modificar</param>
+            <returns>Entidad modificada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.Remove(`0)">
+            <summary>
+            Remueve una entidad en el repositorio de datos
+            </summary>
+            <param name="entity">Entidad a remover</param>
+            <returns>Entidad removida</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.AddAsync(`0)">
+            <summary>
+            Agrega una nueva entidad en el repositorio de datos de forma asíncrona
+            </summary>
+            <param name="entity">Entidad a agregar</param>
+            <returns>Entidad agregada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.ModifyAsync(`0)">
+            <summary>
+            Modifica una entidad en el repositorio de datos de forma asíncrona
+            </summary>
+            <param name="entity">Entidad a modificar</param>
+            <returns>Entidad modificada</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.RemoveAsync(`0)">
+            <summary>
+            Remueve una entidad en el repositorio de datos de forma asíncrona
+            </summary>
+            <param name="entity">Entidad a remover</param>
+            <returns>Entidad removida</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.List">
+            <summary>
+            Lista todas las entidades en el repositorio de datos
+            </summary>
+            <returns>Conjunto de entidades resultado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.List(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Lista las entidades que cumplen con la expresión
+            </summary>
+            <param name="expression">Expresión de búsqueda</param>
+            <returns>Conjunto de entidades resultado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.List(System.String,System.Object)">
+            <summary>
+            Lista las entidades en el repositorio de datos que cumplan con la condición <paramref name="rawWhere"/>
+            </summary>
+            <param name="rawWhere">Condición WHERE cruda sin incluir la palabra reservada WHERE</param>
+            <param name="parameters">Objeto de parámetros usados en la condición</param>
+            <returns>Conjunto de entidades resultado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.ListAsync">
+            <summary>
+            Lista todas las entidades en el repositorio de datos
+            </summary>
+            <returns>Conjunto de entidades resultado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.ListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Lista las entidades que cumplen con la expresión
+            </summary>
+            <param name="expression">Expresión de búsqueda</param>
+            <returns>Conjunto de entidades resultado</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Repository`1.ListAsync(System.String,System.Object)">
+            <summary>
+            Lista las entidades en el repositorio de datos que cumplan con la condición <paramref name="rawWhere"/>
+            </summary>
+            <param name="rawWhere">Condición WHERE cruda</param>
+            <param name="parameters">Objeto de parámetros usados en la condición</param>
+            <returns>Conjunto de entidades resultado</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet`1">
+            <summary>
+            Encapsula el conjunto de resultados de la ejeución de una
+            secuencia de comandos
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad resultado</typeparam>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet`1.Result">
+            <summary>
+            Resultado interno
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet`1.Context">
+            <summary>
+            Contexto de datos
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet`1.#ctor(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.AbstractDbContext,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="context">Contexto de datos</param>
+            <param name="entities">Entidades resultado</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet`1.GetEnumerator">
+            <summary>
+            Obtiene un enumerador
+            </summary>
+            <returns>Enumerador</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Obtiene un enumerador
+            </summary>
+            <returns>Enumerador</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSetExtensions">
+            <summary>
+            Provee métodos de extensión para los conjuntos de resultados
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSetExtensions.GetPropertyAccess(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Obtiene el acceso a la propiedad en la expresión
+            </summary>
+            <param name="propertyAccessExpression">Expresión a evaluar</param>
+            <returns>Propiedad en la expresión</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSetExtensions.Include``1(OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.ResultSet{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Incluye en el conjunto de resultados la
+            entidad que referencia la propiedad de navegación
+            </summary>
+            <typeparam name="TEntity">Tipo de la entidad del conjunto de resultados</typeparam>
+            <param name="resultSet">Conjunto de resultados que extiende el método</param>
+            <param name="navigationPropertyExpression">Propiedad de navegación en la entidad</param>
+            <returns>Conjunto de resultados</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter">
+            <summary>
+            Encapsula los datos de un parámetro
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter._name">
+            <summary>
+            Nombre del parámetro
+            </summary>
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter._value">
+            <summary>
+            Valor del parámetro
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.Name">
+            <summary>
+            Nombre o identificador del parámetro
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.DbType">
+            <summary>
+            Tipo de dato en el contexto
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.ClrType">
+            <summary>
+            Tipo de dato .Net
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.Value">
+            <summary>
+            Valor del parámetro
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.#ctor(System.String,System.Object,System.Type)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="name">Nombre del parámetro</param>
+            <param name="value">Valor del parámetro</param>
+            <param name="clrType">Tipo del parámetro</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.CalcTypes">
+            <summary>
+            Calcula las propiedades tipos para el valor asignado
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Parameter.GetParameters(System.Object)">
+            <summary>
+            Obtiene una enumeración de parámetros a partir de las
+            propiedades de un objeto
+            </summary>
+            <param name="parameters">Objeto de parámetros</param>
+            <returns>Enumeración de parámetros</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.ArgumentException">
+            <summary>
+              Busca una cadena traducida similar a El parámetro ({0}) no tiene un valor válido.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.EntityAlreadyExistsException">
+            <summary>
+              Busca una cadena traducida similar a Está intentando agregar una entidad ({0}) que ya existe en el contexto de datos.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.ForeignPropertyDontExistsException">
+            <summary>
+              Busca una cadena traducida similar a La propiedad foránea ({0}) no existe en la entidad ({1}).
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidDbContextTypeException">
+            <summary>
+              Busca una cadena traducida similar a El tipo de contexto ({0}) no es válido.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidEntityKeyException">
+            <summary>
+              Busca una cadena traducida similar a La entidad ({0}) tiene una cantidad inválida de propiedades marcadas como llave principal.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidForeignPropertyException">
+            <summary>
+              Busca una cadena traducida similar a El tipo de la propiedad de foránea ({0}) no es corresponde con el de la propiedad local.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidIncludeOperationException">
+            <summary>
+              Busca una cadena traducida similar a Operación de inclusión inválida. El nivel de inclusión que intenta usar no está permitido.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidNavigationPropertyException">
+            <summary>
+              Busca una cadena traducida similar a El tipo de la propiedad de navegación ({0}) no es válido.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidNullableParameterException">
+            <summary>
+              Busca una cadena traducida similar a Un parámetro nulo debe ser de tipo Nullable&lt;T&gt;.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidOperationEntityEntryException">
+            <summary>
+              Busca una cadena traducida similar a La operación que intenta realizar no es válida sobre la entidad ({0}).
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidPropertyExpressionException">
+            <summary>
+              Busca una cadena traducida similar a Expresión de propiedad inválida.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.InvalidTypeEntityKeyException">
+            <summary>
+              Busca una cadena traducida similar a El tipo de dato de la propiedad llave en la entidad ({0}) no se ajusta con el tipo de llave.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.NavigationPropertyDontExistsException">
+            <summary>
+              Busca una cadena traducida similar a La propiedad de navegación ({0}) no existe en la entidad ({1}).
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.NotInitializedRepositoryException">
+            <summary>
+              Busca una cadena traducida similar a El repositorio {0} no ha sido inicializado.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.UndefinedParameterException">
+            <summary>
+              Busca una cadena traducida similar a El parámetro ({0}) no ha sido definido.
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.Properties.Resources.UnsupportedExpressionException">
+            <summary>
+              Busca una cadena traducida similar a Expresión no soportada ({0}).
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.Where(System.Object)">
+            <summary>
+            Perform a where constraint
+            </summary>
+            <param name="constraints"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.Where(System.Func{`0,`0})">
+            <summary>
+            Apply a nested where clause
+            </summary>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.Where(System.String,System.String,System.Func{`0,`0})">
+            <summary>
+            Perform a sub query where clause
+            </summary>
+            <param name="column"></param>
+            <param name="op"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.Clone">
+            <summary>
+            Return a cloned copy of the current query.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.AddComponent(System.String,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractClause,System.String)">
+            <summary>
+            Add a component clause to the query.
+            </summary>
+            <param name="component"></param>
+            <param name="clause"></param>
+            <param name="engineCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.GetComponents``1(System.String,System.String)">
+            <summary>
+            Get the list of clauses for a component.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.GetComponents(System.String,System.String)">
+            <summary>
+            Get the list of clauses for a component.
+            </summary>
+            <param name="component"></param>
+            <param name="engineCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.GetOneComponent``1(System.String,System.String)">
+            <summary>
+            Get a single component clause from the query.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.GetOneComponent(System.String,System.String)">
+            <summary>
+            Get a single component clause from the query.
+            </summary>
+            <param name="component"></param>
+            <param name="engineCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.HasComponent(System.String,System.String)">
+            <summary>
+            Return wether the query has clauses for a component.
+            </summary>
+            <param name="component"></param>
+            <param name="engineCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.ClearComponent(System.String,System.String)">
+            <summary>
+            Remove all clauses for a component.
+            </summary>
+            <param name="component"></param>
+            <param name="engineCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.And">
+            <summary>
+            Set the next boolean operator to "and" for the "where" clause.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.Or">
+            <summary>
+            Set the next boolean operator to "or" for the "where" clause.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.Not(System.Boolean)">
+            <summary>
+            Set the next "not" operator for the "where" clause.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.GetOr">
+            <summary>
+            Get the boolean operator and reset it to "and"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.GetNot">
+            <summary>
+            Get the "not" operator and clear it
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.BaseQuery`1.From(System.String)">
+            <summary>
+            Add a from Clause
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractClause.Engine">
+            <summary>
+            Gets or sets the SQL engine.
+            </summary>
+            <value>
+            The SQL engine.
+            </value>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractClause.Component">
+            <summary>
+            Gets or sets the component name.
+            </summary>
+            <value>
+            The component name.
+            </value>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AggregateClause">
+            <summary>
+            Represents aggregate clause like "COUNT", "MAX" or etc.
+            </summary>
+            <seealso cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractClause" />
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AggregateClause.Columns">
+            <summary>
+            Gets or sets columns that used in aggregate clause.
+            </summary>
+            <value>
+            The columns to be aggregated.
+            </value>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AggregateClause.Type">
+            <summary>
+            Gets or sets the type of aggregate function.
+            </summary>
+            <value>
+            The type of aggregate function, e.g. "MAX", "MIN", etc.
+            </value>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AggregateClause.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Column">
+            <summary>
+            Represents "column" or "column as alias" clause.
+            </summary>
+            <seealso cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractColumn" />
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Column.Name">
+            <summary>
+            Gets or sets the column name. Can be "columnName" or "columnName as columnAlias".
+            </summary>
+            <value>
+            The column name.
+            </value>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Column.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.QueryColumn">
+            <summary>
+            Represents column clause calculated using query.
+            </summary>
+            <seealso cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractColumn" />
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.QueryColumn.Query">
+            <summary>
+            Gets or sets the query that will be used for column value calculation.
+            </summary>
+            <value>
+            The query for column value calculation.
+            </value>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.RawColumn.Expression">
+            <summary>
+            Gets or sets the RAW expression.
+            </summary>
+            <value>
+            The RAW expression.
+            </value>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.RawColumn.Clone">
+            <inheritdoc />
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Combine.Query">
+            <summary>
+            Gets or sets the query to be combined with.
+            </summary>
+            <value>
+            The query that will be combined.
+            </value>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Combine.Operation">
+            <summary>
+            Gets or sets the combine operation, e.g. "UNION", etc.
+            </summary>
+            <value>
+            The combine operation.
+            </value>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Combine.All">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.Combine"/> clause will combine all.
+            </summary>
+            <value>
+              <c>true</c> if all; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BasicCondition">
+            <summary>
+            Represents a comparison between a column and a value.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BasicCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BasicStringCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BasicDateCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.TwoColumnsCondition">
+            <summary>
+            Represents a comparison between two columns.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.TwoColumnsCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.QueryCondition`1">
+            <summary>
+            Represents a comparison between a column and a full "subquery".
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.QueryCondition`1.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.InCondition`1">
+            <summary>
+            Represents a "is in" condition.
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.InQueryCondition">
+            <summary>
+            Represents a "is in subquery" condition.
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BetweenCondition`1">
+            <summary>
+            Represents a "is between" condition.
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.NullCondition">
+            <summary>
+            Represents an "is null" condition.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.NullCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BooleanCondition">
+            <summary>
+            Represents a boolean (true/false) condition.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.BooleanCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.NestedCondition`1">
+            <summary>
+            Represents a "nested" clause condition.
+            i.e OR (myColumn = "A")
+            </summary>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.ExistsCondition">
+            <summary>
+            Represents an "exists sub query" clause condition.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.ExistsCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.RawCondition.Clone">
+            <inheritdoc />
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractFrom.Alias">
+            <summary>
+            Try to extract the Alias for the current clause.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.FromClause">
+            <summary>
+            Represents a "from" clause.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.FromClause.Clone">
+            <inheritdoc />
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.QueryFromClause">
+            <summary>
+            Represents a "from subquery" clause.
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.QueryFromClause.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.RawFromClause.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.DeepJoin.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.LimitOffset.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.OrderBy.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.RawOrderBy.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.OrderByRandom.Clone">
+            <inheritdoc />
+        </member>
+        <member name="F:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.operators">
+            <summary>
+            A list of white-listed operators
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.CompileColumn(OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.SqlResult,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Clauses.AbstractColumn)">
+            <summary>
+            Compile a single column clause
+            </summary>
+            <param name="ctx"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.CompileRandom(System.String)">
+            <summary>
+            Compile the random statement into SQL.
+            </summary>
+            <param name="seed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.Wrap(System.String)">
+            <summary>
+            Wrap a single string in a column identifier.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.WrapValue(System.String)">
+            <summary>
+            Wrap a single string in keyword identifiers.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.Parameterize``1(OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.SqlResult,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Create query parameter place-holders for an array.
+            </summary>
+            <param name="ctx"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Compilers.Compiler.WrapArray(System.Collections.Generic.List{System.String})">
+            <summary>
+            Wrap an array of values.
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Helper.Flatten(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Flat IEnumerable one level down
+            </summary>
+            <param name="array"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Join.JoinWith(System.String)">
+            <summary>
+            Alias for "from" operator.
+            Since "from" does not sound well with join clauses
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.Take(System.Int32)">
+            <summary>
+            Alias for Limit
+            </summary>
+            <param name="limit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.Skip(System.Int32)">
+            <summary>
+            Alias for Offset
+            </summary>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.ForPage(System.Int32,System.Int32)">
+            <summary>
+            Set the limit and offset for a given page.
+            </summary>
+            <param name="page"></param>
+            <param name="perPage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.When(System.Boolean,System.Func{OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query},System.Func{OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query})">
+            <summary>
+            Apply the callback's query changes if the given "condition" is true.
+            </summary>
+            <param name="condition"></param>
+            <param name="whenTrue">Invoked when the condition is true</param>
+            <param name="whenFalse">Optional, invoked when the condition is false</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.WhenNot(System.Boolean,System.Func{OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query})">
+            <summary>
+            Apply the callback's query changes if the given "condition" is false.
+            </summary>
+            <param name="condition"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.Where(System.Collections.Generic.IEnumerable{OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot})">
+            <summary>
+            Crea una clausula WHERE a partir de una lista de <see cref="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot"/>
+            </summary>
+            <param name="properties">Lista de propiedades</param>
+            <returns>Consulta</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.Having(System.Object)">
+            <summary>
+            Perform a Having constraint
+            </summary>
+            <param name="constraints"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.Having(System.Func{OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query})">
+            <summary>
+            Apply a nested Having clause
+            </summary>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.Having(System.String,System.String,System.Func{OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query,OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query})">
+            <summary>
+            Perform a sub query Having clause
+            </summary>
+            <param name="column"></param>
+            <param name="op"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.AsInsert(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{System.Object}})">
+            <summary>
+            Produces insert multi records
+            </summary>
+            <param name="columns"></param>
+            <param name="valuesCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.AsInsert(System.Collections.Generic.IEnumerable{System.String},OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query)">
+            <summary>
+            Produces insert from subquery
+            </summary>
+            <param name="columns"></param>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.AsInsert(System.Collections.Generic.IEnumerable{OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot})">
+            <summary>
+            Prepara el objeto de consulta como un Insert
+            </summary>
+            <param name="properties">Propiedades a usar como columnas</param>
+            <returns>Objeto de consulta</returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.SelectRaw(System.String,System.Object[])">
+            <summary>
+            Add a new "raw" select expression to the query.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.QueryBuilder.Query.AsUpdate(System.Collections.Generic.IEnumerable{OpheliaSuiteV2.Core.DataAccess.MicroSQL.ORM.Internal.PropertySnapshot})">
+            <summary>
+            Prepara el objeto de consulta como un Update
+            </summary>
+            <param name="properties">Propiedades a usar como columnas</param>
+            <returns>Objeto de consulta</returns>
+        </member>
+        <member name="T:OpheliaSuiteV2.Core.DataAccess.MicroSQL.TransactionInfo">
+            <summary>
+            Encapsula la información del inicio de una transacción
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.TransactionInfo.CallerId">
+            <summary>
+            Id del invocador de la tranzacción
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.TransactionInfo.Transaction">
+            <summary>
+            Transacción
+            </summary>
+        </member>
+        <member name="P:OpheliaSuiteV2.Core.DataAccess.MicroSQL.TransactionInfo.InTransaction">
+            <summary>
+            Valor que indica si existe una transacción en curso
+            </summary>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.TransactionInfo.#ctor(System.String,System.Data.IDbTransaction)">
+            <summary>
+            Inicializa una nueva instancia de la clase
+            </summary>
+            <param name="callerId">Id del invocador de la tranzacción</param>
+            <param name="transaction">Transacción</param>
+        </member>
+        <member name="M:OpheliaSuiteV2.Core.DataAccess.MicroSQL.TransactionInfo.Reset">
+            <summary>
+            Reinicia la configuración de la transacción
+            </summary>
+        </member>
+    </members>
+</doc>

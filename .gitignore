@@ -1,0 +1,7 @@
+.vs/
+OpheliaSuiteV2.Core.DataAccess.MicroSQL/bin/
+OpheliaSuiteV2.Core.DataAccess.MicroSQL/obj/
+TestWebApplication/bin/
+TestWebApplication/obj/
+TestConsole/obj/
+TestConsole/bin/
